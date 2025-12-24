@@ -216,3 +216,161 @@ img {
 .mobile-bottom-nav a:focus>svg {
   transform: translateY(-2px) scale(1.05);
 }
+
+/* Shop page premium visuals */
+@keyframes fade-up {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.card-entrance {
+  animation: fade-up 420ms cubic-bezier(.22, .9, .36, 1) both;
+}
+
+.card-elevated {
+  box-shadow: 0 8px 30px rgba(16, 24, 40, 0.08), 0 2px 6px rgba(16, 24, 40, 0.04);
+  transition: box-shadow .28s ease, transform .28s ease;
+}
+
+.card-elevated:hover {
+  box-shadow: 0 20px 60px rgba(16, 24, 40, 0.12), 0 6px 18px rgba(16, 24, 40, 0.06);
+  transform: translateY(-6px);
+}
+
+.product-image-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: .5rem;
+}
+
+.product-image-wrap img {
+  transition: transform .4s ease, filter .4s ease;
+  display: block;
+}
+
+.product-image-wrap:hover img {
+  transform: scale(1.06);
+  filter: brightness(1.03) contrast(1.02);
+}
+
+.product-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(2, 6, 23, 0.06) 100%);
+  pointer-events: none;
+}
+
+.premium-badge {
+  background: linear-gradient(90deg, rgba(212, 175, 55, 1), rgba(239, 68, 68, 1));
+  color: white;
+  font-weight: 600;
+}
+
+.shop-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 10% 10%, rgba(255, 255, 255, 0.04), transparent 25%), radial-gradient(ellipse at 90% 80%, rgba(0, 0, 0, 0.06), transparent 30%);
+  pointer-events: none;
+}
+
+/* subtle shimmer for featured highlight */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-highlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  background-size: 200% 100%;
+  animation: shimmer 4s linear infinite;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Tabs scrolling for mobile */
+.tabs-scroll {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.25rem;
+}
+
+.tabs-scroll .tab-trigger {
+  min-width: fit-content;
+  flex: 0 0 auto;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Make card layout reliably stack and actions stick to bottom on mobile */
+.card-entrance {
+  will-change: transform, opacity;
+}
+
+.card-actions-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .card-actions-stack {
+    flex-direction: row;
+  }
+}
+
+/* Improve touch targets */
+button,
+a {
+  touch-action: manipulation;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-entrance {
+    animation: none !important;
+  }
+}
+
+/* Image Modal (lightbox) styles */
+.image-modal-overlay {
+  animation: fade-up 220ms cubic-bezier(.22, .9, .36, 1) both;
+}
+
+.image-modal-content img {
+  border-radius: 0.5rem;
+}
+
+.image-modal-close {
+  backdrop-filter: blur(4px);
+}
+
+/* Mobile: make product images fit better and appear less "tophopped" */
+@media (max-width: 639px) {
+  .product-image-wrap img {
+    object-fit: contain !important;
+    height: auto !important;
+    max-height: 220px;
+  }
+}

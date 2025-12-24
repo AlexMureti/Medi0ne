@@ -19,6 +19,7 @@ import { Badge } from '../components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { SEOComponent } from '../components/seo/SEOComponent';
+import ImageModal from '../components/ui/ImageModal';
 import { businessInfo } from '../data/business';
 import { SEOData } from '../types';
 
@@ -159,104 +160,127 @@ const ShopPage: React.FC = () => {
   const ProductCard: React.FC<{ product: any, featured?: boolean }> = ({
     product,
     featured = false
-  }) => (
-    <Card className="group hover:shadow-xl transition-all duration-300 h-full">
-      <div className="relative">
-        <img
-          src={product.image}
-          alt={product.name}
-          className={`w-full object-cover ${featured ? 'h-48' : 'h-40'} group-hover:scale-105 transition-transform duration-300`}
-        />
-        <div className="absolute top-2 right-2 flex flex-col space-y-1">
-          {product.prescription && (
-            <Badge variant="destructive" className="text-xs">
-              Rx Required
-            </Badge>
-          )}
-          {!product.inStock && (
-            <Badge variant="secondary" className="text-xs">
-              Out of Stock
-            </Badge>
-          )}
-        </div>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity"
-        >
-          <Heart className="h-4 w-4" />
-        </Button>
-      </div>
+  }) => {
+    const [open, setOpen] = React.useState(false);
 
-      <CardHeader className={featured ? 'pb-2' : 'pb-0'}>
-        <div className="flex items-center justify-between mb-2">
-          <Badge variant="outline" className="text-xs">
-            {product.category}
-          </Badge>
-          <div className="flex items-center space-x-1">
-            <Star className="h-4 w-4 text-yellow-400 fill-current" />
-            <span className="text-sm text-gray-600">{product.rating}</span>
-            <span className="text-sm text-gray-400">({product.reviews})</span>
-          </div>
-        </div>
-        <CardTitle className={`${featured ? 'text-lg' : 'text-base'} line-clamp-2`}>
-          {product.name}
-        </CardTitle>
-        <p className="text-sm text-gray-600 line-clamp-1">
-          {product.description}
-        </p>
-      </CardHeader>
-
-      <CardContent className={featured ? 'pt-2' : 'pt-0'}>
-        <div className="flex items-center justify-between mb-4">
-          <div>
-            <span className="text-lg font-bold text-medione-blue">Inquire for Price</span>
-          </div>
-          {!product.inStock && (
-            <Badge variant="secondary">Out of Stock</Badge>
-          )}
-        </div>
-
-        {featured && product.benefits && (
-          <div className="mb-4">
-            <h4 className="text-sm font-semibold text-gray-900 mb-2">Benefits:</h4>
-            <ul className="text-xs text-gray-600 space-y-1">
-              {product.benefits.map((benefit, index) => (
-                <li key={index} className="flex items-start space-x-1">
-                  <span className="text-green-500 mt-0.5">•</span>
-                  <span>{benefit}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        <div className="flex space-x-2">
-          <Button
-            className="flex-1"
-            size={featured ? 'default' : 'sm'}
-            disabled={!product.inStock}
-            asChild
+    return (
+      <Card className="group card-elevated card-entrance transition-all duration-300 h-full flex flex-col">
+        <div className={`relative product-image-wrap ${featured ? 'shimmer-highlight' : ''}`}>
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            aria-label={`View full image of ${product.name}`}
+            className="w-full block p-0 border-0 bg-transparent cursor-pointer"
           >
-            <a href="https://wa.me/254728079401" target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="mr-2 h-4 w-4" />
-              Inquire Now
-            </a>
-          </Button>
+            <img
+              src={product.image}
+              alt={product.name}
+              loading="lazy"
+              className={`w-full ${featured ? 'h-56 md:h-48' : 'h-48 md:h-40'} object-contain md:object-cover`}
+            />
+          </button>
+          <div className="product-image-overlay" />
+          <div className="absolute top-2 right-2 flex flex-col space-y-1">
+            {product.prescription && (
+              <Badge variant="destructive" className="text-xs">
+                Rx Required
+              </Badge>
+            )}
+            {!product.inStock && (
+              <Badge variant="secondary" className="text-xs">
+                Out of Stock
+              </Badge>
+            )}
+          </div>
           <Button
-            variant="outline"
-            size={featured ? 'default' : 'sm'}
-            asChild
+            variant="ghost"
+            size="icon"
+            className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity"
           >
-            <a href="tel:+254728079401">
-              <Phone className="h-4 w-4" />
-            </a>
+            <Heart className="h-4 w-4" />
           </Button>
-        </div>
-      </CardContent>
-    </Card>
-  );
+          <div className="absolute bottom-2 right-2 bg-white/80 rounded-full p-1 shadow-sm">
+            <Search className="h-4 w-4 text-gray-700" />
+          </div>
+          {featured && (
+            <div className="absolute left-2 top-2">
+              <div className="premium-badge text-xs px-2 py-0.5 rounded">Top Pick</div>
+            </div>
+          )}
 
+          {/* Image modal for full view */}
+          <ImageModal src={product.image} alt={product.name} open={open} onClose={() => setOpen(false)} />
+        </div>
+        <CardHeader className={featured ? 'pb-2' : 'pb-0'}>
+          <div className="flex items-center justify-between mb-2">
+            <Badge variant="outline" className="text-xs">
+              {product.category}
+            </Badge>
+            <div className="flex items-center space-x-1">
+              <Star className="h-4 w-4 text-yellow-400 fill-current" />
+              <span className="text-sm text-gray-600">{product.rating}</span>
+              <span className="text-sm text-gray-400">({product.reviews})</span>
+            </div>
+          </div>
+          <CardTitle className={`${featured ? 'text-lg' : 'text-base'} line-clamp-2`}>
+            {product.name}
+          </CardTitle>
+          <p className="text-sm text-gray-600 line-clamp-1">
+            {product.description}
+          </p>
+        </CardHeader>
+
+        <CardContent className={`${featured ? 'pt-2' : 'pt-0'} mt-auto`}>
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <span className="text-lg font-bold text-medione-blue">Inquire for Price</span>
+            </div>
+            {!product.inStock && (
+              <Badge variant="secondary">Out of Stock</Badge>
+            )}
+          </div>
+
+          {featured && product.benefits && (
+            <div className="mb-4">
+              <h4 className="text-sm font-semibold text-gray-900 mb-2">Benefits:</h4>
+              <ul className="text-xs text-gray-600 space-y-1">
+                {product.benefits.map((benefit, index) => (
+                  <li key={index} className="flex items-start space-x-1">
+                    <span className="text-green-500 mt-0.5">•</span>
+                    <span>{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <div className="card-actions-stack">
+            <Button
+              className="w-full sm:flex-1"
+              size={featured ? 'default' : 'sm'}
+              disabled={!product.inStock}
+              asChild
+            >
+              <a href="https://wa.me/254728079401" target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="mr-2 h-4 w-4" />
+                Inquire Now
+              </a>
+            </Button>
+            <Button
+              variant="outline"
+              size={featured ? 'default' : 'sm'}
+              className="w-full sm:w-auto"
+              asChild
+            >
+              <a href="tel:+254728079401">
+                <Phone className="h-4 w-4" />
+              </a>
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  };
   return (
     <>
       <SEOComponent data={seoData} />
@@ -282,6 +306,7 @@ const ShopPage: React.FC = () => {
               </div>
             </div>
           </div>
+          <div className="shop-hero-overlay" />
         </div>
       </section>
 
@@ -354,9 +379,9 @@ const ShopPage: React.FC = () => {
           </div>
 
           <Tabs defaultValue="all" className="w-full">
-            <TabsList className="grid w-full grid-cols-6 mb-8">
+            <TabsList className="tabs-scroll no-scrollbar mb-8">
               {productCategories.map((category) => (
-                <TabsTrigger key={category.id} value={category.id} className="text-sm">
+                <TabsTrigger key={category.id} value={category.id} className="tab-trigger text-sm inline-flex items-center whitespace-nowrap px-3 py-2 rounded-md">
                   {category.label}
                 </TabsTrigger>
               ))}
