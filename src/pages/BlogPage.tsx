@@ -62,7 +62,7 @@ const BlogPage: React.FC = () => {
       updatedAt: '2025-10-10',
       category: 'Medical Advice',
       tags: ['medication', 'adherence', 'chronic disease', 'patient care'],
-      image: '/images/medication-services.png',
+      image: 'https://i.pinimg.com/1200x/ff/37/ff/ff37ffab8ee3e92aeccb80843d0149a4.jpg',
       readTime: 6,
       featured: true
     },
@@ -77,7 +77,7 @@ const BlogPage: React.FC = () => {
       updatedAt: '2025-10-05',
       category: 'Health Education',
       tags: ['vaccination', 'prevention', 'immunization', 'health screening'],
-      image: '/images/consultation.png',
+      image: 'https://i.pinimg.com/1200x/e9/e5/4e/e9e54e2bb7d8390ca001a59cb7b196ca.jpg',
       readTime: 7,
       featured: false
     },
@@ -92,7 +92,7 @@ const BlogPage: React.FC = () => {
       updatedAt: '2025-09-28',
       category: 'Health Education',
       tags: ['antibiotics', 'stewardship', 'resistance', 'safe use'],
-      image: '/images/medication-services.png',
+      image: 'https://i.pinimg.com/736x/de/06/1f/de061f34e91bb6158d80f19c266eb793.jpg',
       readTime: 8,
       featured: false
     },
@@ -107,7 +107,7 @@ const BlogPage: React.FC = () => {
       updatedAt: '2025-09-20',
       category: 'Women\'s Health',
       tags: ['pregnancy', 'nutrition', 'vitamins', 'prenatal care'],
-      image: '/images/consultation.png',
+      image: 'https://i.pinimg.com/1200x/00/73/4c/00734c23e99127191de5f72517634c4d.jpg',
       readTime: 6,
       featured: false
     },
@@ -122,7 +122,7 @@ const BlogPage: React.FC = () => {
       updatedAt: '2025-09-15',
       category: 'Chronic Disease',
       tags: ['diabetes', 'monitoring', 'lifestyle', 'chronic care'],
-      image: '/images/consultation.png',
+      image: 'https://i.pinimg.com/736x/06/5c/ba/065cba728f3c5acc6fec6e4077194f90.jpg',
       readTime: 9,
       featured: false
     }

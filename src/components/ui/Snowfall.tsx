@@ -66,10 +66,6 @@ export const Snowfall: React.FC = () => {
 
     return (
         <div aria-hidden className="pointer-events-none fixed inset-0 overflow-hidden" style={{ zIndex: 9999 }}>
-            {/* Dev badge to confirm component mounted (visible only in non-production) */}
-            {process.env.NODE_ENV !== 'production' && (
-                <div className="pointer-events-none fixed top-3 right-3 z-[10000] rounded px-2 py-1 text-xs bg-black/60 text-white">Snow: ON</div>
-            )}
             <div className="w-full h-full relative">
                 {flakes.map((f, i) => (
                     <div

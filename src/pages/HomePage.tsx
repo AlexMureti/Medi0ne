@@ -33,7 +33,7 @@ const HomePage: React.FC = () => {
       'prescription services Nanyuki',
       'pharmaceutical services Laikipia',
       'health checkups Nanyuki',
-      'Nancy Kimathi pharmacist',
+      'Nancy Kanana pharmacist',
       'pharmacy near me',
       'healthcare Nanyuki Kenya',
       'Peak Place Mall pharmacy'
@@ -51,7 +51,7 @@ const HomePage: React.FC = () => {
           <img
             src="/images/hero-pharmacy.png"
             alt="Medione Pharmacy - Professional Healthcare Services"
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover object-center opacity-20"
           />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -65,8 +65,8 @@ const HomePage: React.FC = () => {
                 Your Trusted Healthcare Partner in <span className="text-blue-200">Nanyuki</span>
               </h1>
               <p className="text-xl mb-8 text-blue-100">
-                M<span className="text-medione-green">ed</span>i<span className="text-medione-blue">o</span>ne Pharmacy offers comprehensive pharmaceutical services, expert medical consultations, 
-                vaccinations, and health checkups. Led by licensed pharmacist Nancy Kanana Kimathi, 
+                <img src="/medione logo.jpg" alt="Medione Pharmacy" className="h-8 w-auto inline mx-1" /> offers comprehensive pharmaceutical services, expert medical consultations,
+                vaccinations, and health checkups. Led by licensed pharmacist Nancy Kanana,
                 we provide patient-centered care with excellence.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -100,27 +100,27 @@ const HomePage: React.FC = () => {
             </div>
             <div className="lg:text-right">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
-                <h3 className="text-2xl font-bold mb-6">Quick Contact</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <MapPin className="h-6 w-6 text-blue-200" />
-                    <div>
-                      <p className="font-semibold">Peak Place Mall, Ground Floor</p>
-                      <p className="text-blue-200">Nanyuki, Kenya</p>
+                <h3 className="text-2xl font-bold mb-6 text-center lg:text-left">Quick Contact</h3>
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-3">
+                    <MapPin className="h-6 w-6 text-blue-200 mt-1 flex-shrink-0" />
+                    <div className="min-w-0 flex-1">
+                      <p className="font-semibold text-white">Peak Place Mall, Ground Floor</p>
+                      <p className="text-blue-200 text-sm">Nanyuki, Kenya</p>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <Phone className="h-6 w-6 text-blue-200" />
-                    <div>
-                      <p className="font-semibold">0728079401</p>
-                      <p className="text-blue-200">Call or WhatsApp</p>
+                  <div className="flex items-start space-x-3">
+                    <Phone className="h-6 w-6 text-blue-200 mt-1 flex-shrink-0" />
+                    <div className="min-w-0 flex-1">
+                      <p className="font-semibold text-white">0728079401</p>
+                      <p className="text-blue-200 text-sm">Call or WhatsApp</p>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <Clock className="h-6 w-6 text-blue-200" />
-                    <div>
-                      <p className="font-semibold">Open Until Late</p>
-                      <p className="text-blue-200">7 Days a Week</p>
+                  <div className="flex items-start space-x-3">
+                    <Clock className="h-6 w-6 text-blue-200 mt-1 flex-shrink-0" />
+                    <div className="min-w-0 flex-1">
+                      <p className="font-semibold text-white">Open Until Late</p>
+                      <p className="text-blue-200 text-sm">7 Days a Week</p>
                     </div>
                   </div>
                 </div>
@@ -194,8 +194,8 @@ const HomePage: React.FC = () => {
             <div>
               <img
                 src="/images/nancy-consultant.png"
-                alt="Nancy Kanana Kimathi - Principal Medical Consultant"
-                className="w-full rounded-2xl shadow-xl"
+                alt="Nancy Kanana - Principal Medical Consultant"
+                className="w-80 h-80 rounded-full object-cover shadow-xl brightness-75 mx-auto lg:mx-0"
               />
             </div>
             <div>
@@ -204,16 +204,16 @@ const HomePage: React.FC = () => {
                 Licensed Professional
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Meet <span className="text-medione-blue">Nancy Kanana Kimathi</span>
+                Meet <span className="text-medione-blue">Nancy Kanana</span>
               </h2>
               <p className="text-xl text-gray-600 mb-6">
                 Principal Medical Consultant & Lead Pharmacist
               </p>
               <p className="text-gray-700 mb-6">
-                Nancy Kanana Kimathi is a licensed pharmaceutical technologist with extensive 
-                experience in community pharmacy practice, medication therapy management, 
-                and patient-centered care. She holds active registration with the Pharmacy 
-                and Poisons Board of Kenya (PPB2231) and is passionate about improving 
+                Nancy Kanana is a licensed pharmaceutical technologist with extensive
+                experience in community pharmacy practice, medication therapy management,
+                and patient-centered care. She holds active registration with the Pharmacy
+                and Poisons Board of Kenya (PPB2231) and is passionate about improving
                 health outcomes through personalized pharmaceutical services.
               </p>
               <div className="space-y-3 mb-8">
@@ -249,7 +249,7 @@ const HomePage: React.FC = () => {
               What Our Patients Say
             </h2>
             <p className="text-xl text-gray-600">
-              Read testimonials from satisfied patients who trust M<span className="text-medione-green">ed</span>i<span className="text-medione-blue">o</span>ne Pharmacy
+              Read testimonials from satisfied patients who trust <img src="/medione logo.jpg" alt="Medione Pharmacy" className="h-8 w-auto inline mx-1" />
             </p>
           </div>
 
@@ -332,7 +332,7 @@ const HomePage: React.FC = () => {
             Ready to Take Control of Your Health?
           </h2>
           <p className="text-xl mb-8 text-blue-100">
-            Contact M<span className="text-medione-green">ed</span>i<span className="text-medione-blue">o</span>ne Pharmacy today for professional healthcare services, 
+            Contact <img src="/medione logo.jpg" alt="Medione Pharmacy" className="h-8 w-auto inline mx-1" /> today for professional healthcare services,
             expert consultations, and personalized medication management.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

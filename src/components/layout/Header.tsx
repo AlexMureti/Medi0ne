@@ -27,9 +27,11 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
   return (
     <header className={`bg-white shadow-lg sticky top-0 z-50 ${className}`}>
       {/* Festive Banner */}
-      <div className="bg-gradient-to-r from-festive-red via-festive-gold to-festive-green text-white py-1 text-center text-xs font-medium">
+      <div className="bg-gradient-to-r from-festive-red via-festive-gold to-festive-green text-white py-1 text-center text-xs font-medium festive-banner">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          🎄 Merry Christmas & Happy Holidays from Medione Pharmacy! 🎄
+          <span className="festive-emoji">🎄</span> Merry Christmas & Happy Holidays from{' '}
+          <img src="/medione logo.jpg" alt="Medione Pharmacy" className="h-4 inline mx-1 align-text-bottom" />
+          <span className="festive-emoji">🎄</span>
         </div>
       </div>
 
@@ -69,15 +71,10 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
-            <img
-              src="/images/medione-logo.png"
-              alt="Medione Pharmacy Logo"
-              className="h-12 w-12 rounded-full"
-            />
+          <Link to="/" className="flex items-center">
             <div>
               <h1 className="text-2xl font-bold text-gray-900">
-                M<span className="text-medione-green">ed</span>i<span className="text-medione-blue">o</span>ne
+                <img src="/medione logo.jpg" alt="Medione Pharmacy" className="h-10 w-auto inline" />
               </h1>
               <p className="text-sm text-gray-600 italic">
                 <span className="text-medione-blue font-semibold">Y</span>our{' '}
@@ -95,11 +92,10 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
-                  isActive(item.href)
+                className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${isActive(item.href)
                     ? 'text-medione-blue bg-blue-50'
                     : 'text-gray-700 hover:text-medione-blue hover:bg-gray-50'
-                }`}
+                  }`}
               >
                 {item.name}
               </Link>
@@ -115,9 +111,9 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
               </a>
             </Button>
             <Button asChild size="sm" className="bg-medione-green hover:bg-green-700">
-              <a 
-                href="https://wa.me/254728079401" 
-                target="_blank" 
+              <a
+                href="https://wa.me/254728079401"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-1"
               >
@@ -137,11 +133,10 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`px-4 py-3 text-sm font-medium rounded-lg text-center transition-colors ${
-                  isActive(item.href)
+                className={`px-4 py-3 text-sm font-medium rounded-lg text-center transition-colors ${isActive(item.href)
                     ? 'text-white bg-medione-blue'
                     : 'text-gray-700 bg-gray-50 hover:text-medione-blue hover:bg-blue-50'
-                }`}
+                  }`}
               >
                 {item.name}
               </Link>

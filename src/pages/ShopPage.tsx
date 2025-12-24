@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  ShoppingCart, 
-  Search, 
-  Filter, 
-  Star, 
+import {
+  ShoppingCart,
+  Search,
+  Filter,
+  Star,
   Heart,
   ShoppingBag,
   Phone,
@@ -54,13 +54,11 @@ const ShopPage: React.FC = () => {
       name: 'Amoxicillin 500mg Capsules',
       brand: 'MediPharm',
       category: 'Prescription Antibiotics',
-      price: 'KES 800',
-      originalPrice: 'KES 950',
       prescription: true,
       rating: 4.8,
       reviews: 24,
       inStock: true,
-      image: '/images/medication-services.png',
+      image: 'https://deshabpharmacy.com/shop/wp-content/uploads/2022/09/amoxicillin-capsule-unbrand-500mg.jpg',
       description: 'Broad-spectrum antibiotic for bacterial infections',
       benefits: ['Effective against various bacterial infections', 'Doctor prescription required', 'Available in convenient blister pack']
     },
@@ -69,12 +67,11 @@ const ShopPage: React.FC = () => {
       name: 'Multivitamin Complex',
       brand: 'HealthPlus',
       category: 'Vitamins',
-      price: 'KES 1,200',
       prescription: false,
       rating: 4.7,
       reviews: 18,
       inStock: true,
-      image: '/images/medication-services.png',
+      image: 'https://www.nutralie.com/wp-content/uploads/2020/10/Diseno-sin-titulo-3.png',
       description: 'Complete daily multivitamin for adults',
       benefits: ['Supports immune system', 'Boosts energy levels', '30-day supply']
     },
@@ -83,12 +80,11 @@ const ShopPage: React.FC = () => {
       name: 'Paracetamol 500mg Tablets',
       brand: 'Panado',
       category: 'Pain Relief',
-      price: 'KES 150',
       prescription: false,
       rating: 4.9,
       reviews: 45,
       inStock: true,
-      image: '/images/medication-services.png',
+      image: 'https://tiimg.tistatic.com/fp/2/007/943/500mg-paracetamol-tablets-984.jpg',
       description: 'Effective pain relief and fever reducer',
       benefits: ['Fast-acting pain relief', 'Reduces fever', 'Available without prescription']
     },
@@ -97,12 +93,11 @@ const ShopPage: React.FC = () => {
       name: 'Vitamin D3 1000 IU',
       brand: 'SunVital',
       category: 'Vitamins',
-      price: 'KES 850',
       prescription: false,
       rating: 4.6,
       reviews: 12,
       inStock: true,
-      image: '/images/medication-services.png',
+      image: 'https://deliverypharmacyke.com/wp-content/uploads/2021/06/SOLGAR-Vitamin-D3-1000iu-Capsules-100_s.jpeg',
       description: 'Essential vitamin D3 supplement',
       benefits: ['Supports bone health', 'Boosts immune system', 'Easy to swallow capsules']
     }
@@ -114,12 +109,11 @@ const ShopPage: React.FC = () => {
       name: 'Ibuprofen 400mg Tablets',
       brand: 'Advil',
       category: 'Pain Relief',
-      price: 'KES 200',
       prescription: false,
       rating: 4.5,
       reviews: 32,
       inStock: true,
-      image: '/images/medication-services.png',
+      image: 'https://www.simplymedsonline.co.uk/storage/products/3677/images/ibuprofen-400mg-tablets-x-48-1000070875.webp',
       description: 'Anti-inflammatory pain reliever'
     },
     {
@@ -127,12 +121,11 @@ const ShopPage: React.FC = () => {
       name: 'Omeprazole 20mg Capsules',
       brand: 'Prilosec',
       category: 'Digestive Health',
-      price: 'KES 600',
       prescription: true,
       rating: 4.4,
       reviews: 28,
       inStock: true,
-      image: '/images/medication-services.png',
+      image: 'https://img500.exportersindia.com/product_images/bc-500/2023/8/11685037/omeprazole-20-mg-capsule-1693462350-7058124.jpeg',
       description: 'Proton pump inhibitor for acid reflux'
     },
     {
@@ -140,12 +133,11 @@ const ShopPage: React.FC = () => {
       name: 'Metformin 500mg Tablets',
       brand: 'Glucophage',
       category: 'Diabetes Care',
-      price: 'KES 450',
       prescription: true,
       rating: 4.7,
       reviews: 22,
       inStock: true,
-      image: '/images/medication-services.png',
+      image: 'https://www.shutterstock.com/shutterstock/photos/1754907857/display_1500/stock-photo-southminster-essex-a-box-of-metformin-mg-tablets-showing-blister-pack-with-single-1754907857.jpg',
       description: 'Diabetes medication for blood sugar control'
     },
     {
@@ -153,21 +145,20 @@ const ShopPage: React.FC = () => {
       name: 'Facial Moisturizer SPF 30',
       brand: 'SkinCare Plus',
       category: 'Skincare',
-      price: 'KES 1,800',
       prescription: false,
       rating: 4.3,
       reviews: 15,
       inStock: true,
-      image: '/images/medication-services.png',
+      image: 'https://m.media-amazon.com/images/I/61-CJCqYuXL._SL400_.jpg',
       description: 'Daily moisturizing cream with sun protection'
     }
   ];
 
   const allProducts = [...featuredProducts, ...regularProducts];
 
-  const ProductCard: React.FC<{ product: any, featured?: boolean }> = ({ 
-    product, 
-    featured = false 
+  const ProductCard: React.FC<{ product: any, featured?: boolean }> = ({
+    product,
+    featured = false
   }) => (
     <Card className="group hover:shadow-xl transition-all duration-300 h-full">
       <div className="relative">
@@ -188,15 +179,15 @@ const ShopPage: React.FC = () => {
             </Badge>
           )}
         </div>
-        <Button 
-          variant="ghost" 
-          size="icon" 
+        <Button
+          variant="ghost"
+          size="icon"
           className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity"
         >
           <Heart className="h-4 w-4" />
         </Button>
       </div>
-      
+
       <CardHeader className={featured ? 'pb-2' : 'pb-0'}>
         <div className="flex items-center justify-between mb-2">
           <Badge variant="outline" className="text-xs">
@@ -215,22 +206,17 @@ const ShopPage: React.FC = () => {
           {product.description}
         </p>
       </CardHeader>
-      
+
       <CardContent className={featured ? 'pt-2' : 'pt-0'}>
         <div className="flex items-center justify-between mb-4">
           <div>
-            <span className="text-lg font-bold text-gray-900">{product.price}</span>
-            {'originalPrice' in product && (
-              <span className="text-sm text-gray-500 line-through ml-2">
-                {product.originalPrice}
-              </span>
-            )}
+            <span className="text-lg font-bold text-medione-blue">Inquire for Price</span>
           </div>
           {!product.inStock && (
             <Badge variant="secondary">Out of Stock</Badge>
           )}
         </div>
-        
+
         {featured && product.benefits && (
           <div className="mb-4">
             <h4 className="text-sm font-semibold text-gray-900 mb-2">Benefits:</h4>
@@ -244,18 +230,21 @@ const ShopPage: React.FC = () => {
             </ul>
           </div>
         )}
-        
+
         <div className="flex space-x-2">
-          <Button 
-            className="flex-1" 
+          <Button
+            className="flex-1"
             size={featured ? 'default' : 'sm'}
             disabled={!product.inStock}
+            asChild
           >
-            <ShoppingCart className="mr-2 h-4 w-4" />
-            {product.prescription ? 'Consult First' : 'Add to Cart'}
+            <a href="https://wa.me/254728079401" target="_blank" rel="noopener noreferrer">
+              <MessageCircle className="mr-2 h-4 w-4" />
+              Inquire Now
+            </a>
           </Button>
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             size={featured ? 'default' : 'sm'}
             asChild
           >
@@ -271,7 +260,7 @@ const ShopPage: React.FC = () => {
   return (
     <>
       <SEOComponent data={seoData} />
-      
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-medione-green to-medione-blue text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -280,7 +269,7 @@ const ShopPage: React.FC = () => {
               Pharmacy Shop
             </h1>
             <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-8">
-              Quality medications, health products, and wellness items with 
+              Quality medications, health products, and wellness items with
               professional pharmaceutical guidance
             </p>
             <div className="flex justify-center">
@@ -377,8 +366,8 @@ const ShopPage: React.FC = () => {
               <TabsContent key={category.id} value={category.id}>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {allProducts
-                    .filter(product => 
-                      category.id === 'all' || 
+                    .filter(product =>
+                      category.id === 'all' ||
                       product.category.toLowerCase().includes(category.label.toLowerCase().split(' ')[0])
                     )
                     .map((product) => (
@@ -400,7 +389,7 @@ const ShopPage: React.FC = () => {
                 Prescription Services
               </h2>
               <p className="text-gray-600 mb-6">
-                Need prescription medications? Our licensed pharmacists can help you with 
+                Need prescription medications? Our licensed pharmacists can help you with
                 prescription verification, medication counseling, and insurance processing.
               </p>
               <div className="space-y-4 mb-8">
@@ -458,7 +447,7 @@ const ShopPage: React.FC = () => {
             Need Help Finding a Product?
           </h2>
           <p className="text-xl mb-8 text-blue-100">
-            Our pharmacists are here to help you find the right medication or health product. 
+            Our pharmacists are here to help you find the right medication or health product.
             Contact us for personalized recommendations and product availability.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -288,7 +288,7 @@ const ServicesPage: React.FC = () => {
             
             <div>
               <img
-                src="/images/delivery-service.png"
+                src="https://www.sabat.co.za/wp-content/uploads/2024/04/Featured.jpg"
                 alt="Pharmacy delivery service in Nanyuki"
                 className="w-full rounded-2xl shadow-xl"
               />

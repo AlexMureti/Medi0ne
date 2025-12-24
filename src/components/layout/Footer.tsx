@@ -11,15 +11,10 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1 lg:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
-              <img 
-                src="/images/medione-logo.png" 
-                alt="Medione Pharmacy Logo" 
-                className="h-14 w-14 rounded-full"
-              />
+            <div className="flex items-center mb-4">
               <div>
                 <h2 className="text-2xl font-bold">
-                  M<span className="text-medione-green">ed</span>i<span className="text-medione-blue">o</span>ne
+                  <img src="/medione logo.jpg" alt="Medione Pharmacy" className="h-10 w-auto inline" />
                 </h2>
                 <p className="text-sm text-gray-300 italic">
                   <span className="text-blue-600 font-semibold">Y</span>our{' '}
@@ -133,7 +128,7 @@ export const Footer: React.FC = () => {
         <div className="border-t border-blue-700 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              <p>&copy; {currentYear} M<span className="text-medione-green">ed</span>i<span className="text-medione-blue">o</span>ne Pharmacy. All rights reserved.</p>
+              <p>&copy; {currentYear} <img src="/medione logo.jpg" alt="Medione Pharmacy" className="h-6 w-auto inline mx-1" /> All rights reserved.</p>
               <p className="mt-1">Licensed by Pharmacy and Poisons Board of Kenya</p>
             </div>
             <div className="flex space-x-6 text-sm">

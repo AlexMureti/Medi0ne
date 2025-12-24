@@ -113,7 +113,7 @@ export const services: Service[] = [
     price: 'KES 100-200',
     duration: 'Same day',
     available: true,
-    image: '/images/delivery-service.png'
+    image: 'https://www.sabat.co.za/wp-content/uploads/2024/04/Featured.jpg'
   },
   {
     id: 'skincare',
@@ -157,7 +157,7 @@ export const services: Service[] = [
 
 export const nancyKimathi: TeamMember = {
   id: 'nancy-kimathi',
-  name: 'Nancy Kanana Kimathi',
+  name: 'Nancy Kanana',
   title: 'Principal Medical Consultant & Lead Pharmacist',
   credentials: [
     'Licensed Pharmaceutical Technologist',
@@ -165,7 +165,7 @@ export const nancyKimathi: TeamMember = {
     'Active License Valid until December 31, 2025',
     'Member of Pharmaceutical Society of Kenya'
   ],
-  bio: 'Nancy Kanana Kimathi is a highly qualified pharmaceutical technologist with extensive experience in community pharmacy practice, medication therapy management, and patient-centered care. She is passionate about improving health outcomes through personalized pharmaceutical services, patient education, and community health advocacy.',
+  bio: 'Nancy Kanana is a highly qualified pharmaceutical technologist with extensive experience in community pharmacy practice, medication therapy management, and patient-centered care. She is passionate about improving health outcomes through personalized pharmaceutical services, patient education, and community health advocacy.',
   specialties: [
     'Medication Therapy Management',
     'Chronic Disease Management',
