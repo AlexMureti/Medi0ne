@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Phone, MessageCircle, MapPin, Clock, Mail, Home, ShoppingCart, Users, BookOpen } from 'lucide-react';
+import { Phone, MessageCircle, MapPin, Clock, Mail, Home, ShoppingCart, Users, BookOpen, Info, Shield } from 'lucide-react';
 import { Button } from '../ui/button';
 import FestiveLights from '../ui/FestiveLights';
 
@@ -133,6 +133,16 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
           <Link to="/" aria-label="Home" className={`flex-1 text-center py-2 rounded-full ${isActive('/') ? 'text-medione-blue bg-blue-50' : 'text-gray-600 hover:text-medione-blue'}`}>
             <Home className="mx-auto h-5 w-5" />
             <div className="text-xs mt-0.5">Home</div>
+          </Link>
+
+          <Link to="/about" aria-label="About" className={`flex-1 text-center py-2 rounded-full ${isActive('/about') ? 'text-medione-blue bg-blue-50' : 'text-gray-600 hover:text-medione-blue'}`}>
+            <Info className="mx-auto h-5 w-5" />
+            <div className="text-xs mt-0.5">About</div>
+          </Link>
+
+          <Link to="/services" aria-label="Services" className={`flex-1 text-center py-2 rounded-full ${isActive('/services') ? 'text-medione-blue bg-blue-50' : 'text-gray-600 hover:text-medione-blue'}`}>
+            <Shield className="mx-auto h-5 w-5" />
+            <div className="text-xs mt-0.5">Services</div>
           </Link>
 
           <Link to="/shop" aria-label="Shop" className={`flex-1 text-center py-2 rounded-full ${isActive('/shop') ? 'text-medione-blue bg-blue-50' : 'text-gray-600 hover:text-medione-blue'}`}>
