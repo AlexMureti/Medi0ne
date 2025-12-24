@@ -61,7 +61,7 @@ const HomePage: React.FC = () => {
                 <Award className="h-4 w-4 mr-1" />
                 Licensed by PPB Kenya
               </Badge>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                 Your Trusted Healthcare Partner in <span className="text-blue-200">Nanyuki</span>
               </h1>
               <p className="text-xl mb-8 text-blue-100">

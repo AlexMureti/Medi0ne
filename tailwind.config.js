@@ -28,6 +28,13 @@ module.exports = {
 					green: '#4DAE4D',
 					white: '#FFFFFF',
 				},
+				// Festive Christmas Colors
+				festive: {
+					red: '#DC2626',
+					gold: '#D4AF37',
+					silver: '#C0C0C0',
+					green: '#166534',
+				},
 				primary: {
 					DEFAULT: '#205697',
 					foreground: '#FFFFFF',

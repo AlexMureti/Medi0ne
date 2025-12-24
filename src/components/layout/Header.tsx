@@ -26,6 +26,13 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
 
   return (
     <header className={`bg-white shadow-lg sticky top-0 z-50 ${className}`}>
+      {/* Festive Banner */}
+      <div className="bg-gradient-to-r from-festive-red via-festive-gold to-festive-green text-white py-1 text-center text-xs font-medium">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          🎄 Merry Christmas & Happy Holidays from Medione Pharmacy! 🎄
+        </div>
+      </div>
+
       {/* Top Bar */}
       <div className="bg-gradient-to-r from-medione-blue to-medione-green text-white py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -123,17 +130,17 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
       </div>
 
       {/* Mobile Navigation */}
-      <div className="md:hidden border-t border-gray-200">
-        <nav className="px-4 py-2">
-          <div className="flex space-x-1 overflow-x-auto">
+      <div className="md:hidden border-t border-gray-200 bg-white">
+        <nav className="px-4 py-3">
+          <div className="grid grid-cols-2 gap-2">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
-                className={`px-3 py-2 text-sm font-medium rounded-md whitespace-nowrap transition-colors ${
+                className={`px-4 py-3 text-sm font-medium rounded-lg text-center transition-colors ${
                   isActive(item.href)
-                    ? 'text-medione-blue bg-blue-50'
-                    : 'text-gray-700 hover:text-medione-blue hover:bg-gray-50'
+                    ? 'text-white bg-medione-blue'
+                    : 'text-gray-700 bg-gray-50 hover:text-medione-blue hover:bg-blue-50'
                 }`}
               >
                 {item.name}

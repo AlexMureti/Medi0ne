@@ -36,3 +36,72 @@ img {
 .fixed {
   position: fixed;
 }
+
+/* Snowfall styles: subtle, performant, respects prefers-reduced-motion */
+.snowflake {
+  /* Default for light mode: subtle dark flakes on white background */
+  color: rgba(0, 0, 0, 0.12);
+  will-change: transform, opacity;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
+  animation-name: snow-fall, snow-sway;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-duration: 18s, 4s;
+  animation-delay: 0s, 0s;
+  -webkit-backface-visibility: hidden;
+}
+
+@media (prefers-color-scheme: dark) {
+  .snowflake {
+    /* Lighter flakes on dark backgrounds */
+    color: rgba(255, 255, 255, 0.9);
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
+  }
+}
+
+@keyframes snow-fall {
+  0% {
+    transform: translateY(-10%) translateX(0);
+  }
+
+  100% {
+    transform: translateY(110%) translateX(0);
+  }
+}
+
+@keyframes snow-sway {
+  0% {
+    transform: translateX(-10px);
+  }
+
+  50% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
+.snow-sway {
+  animation-name: snow-sway;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Combine the two animations carefully by using grouped transforms in inline styles where needed.
+   For reduced motion users, stop animations */
+@media (prefers-reduced-motion: reduce) {
+  .snowflake {
+    animation: none !important;
+    opacity: 0.6 !important;
+  }
+}
+
+/* smaller and fewer flakes on small screens */
+@media (max-width: 639px) {
+  .snowflake {
+    transform-origin: center;
+  }
+}
