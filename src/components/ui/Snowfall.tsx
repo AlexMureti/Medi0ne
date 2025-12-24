@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { createPortal } from 'react-dom';
 
 const NUM_FLAKES_DESKTOP = 12;
 const NUM_FLAKES_MOBILE = 6;
@@ -12,12 +13,17 @@ function randomChoice<T>(array: T[]): T {
 }
 
 export const Snowfall: React.FC = () => {
-    // Seasonal display logic (Nov 15 - Jan 15) with URL override ?snow=true
+    // Detect dev mode (Vite) and seasonal display logic (Nov 15 - Jan 15) with URL override ?snow=true
+    const isDev = (typeof import.meta !== 'undefined' && (import.meta as any).env && (import.meta as any).env.DEV) || (process.env.NODE_ENV !== 'production');
+
     let show = true; // Force show for festive season
     if (typeof window !== 'undefined') {
         try {
             const url = new URL(window.location.href);
             const override = url.searchParams.get('snow');
+            // debug mode: ?snowDebug=true forces visible, large, immediate flakes for troubleshooting
+            const debugParam = url.searchParams.get('snowDebug');
+            const debug = debugParam === 'true' || debugParam === '1';
             if (override === 'false') {
                 show = false;
             } else if (override === 'true') {
@@ -36,10 +42,9 @@ export const Snowfall: React.FC = () => {
         }
     }
 
-    // helpful debug output — visible in browser console during development
-    if (process.env.NODE_ENV !== 'production') {
+    if (isDev) {
         // eslint-disable-next-line no-console
-        console.debug('Snowfall: show=', show, ' (override ?snow=true to force)');
+        console.info('Snowfall: show=', show, '(override ?snow=true to force)');
     }
 
     if (!show) return null;
@@ -47,32 +52,65 @@ export const Snowfall: React.FC = () => {
     // generate flakes once per mount
     const flakes = useMemo(() => {
         const count = typeof window !== 'undefined' && window.innerWidth < 640 ? NUM_FLAKES_MOBILE : NUM_FLAKES_DESKTOP;
-        return Array.from({ length: count }).map(() => ({
-            left: `${random(0, 100).toFixed(2)}%`,
-            size: `${random(8, 16).toFixed(2)}px`,
-            delay: `${random(0, 10).toFixed(2)}s`,
-            duration: `${random(15, 30).toFixed(2)}s`,
-            swayDuration: `${random(4, 8).toFixed(2)}s`,
-            opacity: `${random(0.4, 0.9).toFixed(2)}`,
-            type: randomChoice(['snowflake', 'star', 'bauble']),
-            color: randomChoice(['text-white', 'text-festive-gold', 'text-festive-red', 'text-festive-silver']),
-        }));
+        // Check if debug mode is active (either via isDev and ?snowDebug=true, or snow=debug)
+        let debugMode = false;
+        if (typeof window !== 'undefined') {
+            try {
+                const url = new URL(window.location.href);
+                const debugParam = url.searchParams.get('snowDebug') || url.searchParams.get('snow');
+                debugMode = debugParam === 'true' || debugParam === '1' || debugParam === 'debug';
+            } catch (e) {
+                debugMode = false;
+            }
+        }
+
+        return Array.from({ length: count }).map(() => {
+            if (debugMode && isDev) {
+                // stronger visuals for debugging
+                return {
+                    left: `${random(5, 95).toFixed(2)}%`,
+                    size: `${random(18, 28).toFixed(2)}px`,
+                    delay: `0s`,
+                    duration: `${random(8, 12).toFixed(2)}s`,
+                    swayDuration: `${random(2, 4).toFixed(2)}s`,
+                    opacity: `1`,
+                    type: randomChoice(['snowflake', 'star']),
+                    color: 'text-white',
+                    debugTop: '2%'
+                };
+            }
+
+            return {
+                left: `${random(0, 100).toFixed(2)}%`,
+                size: `${random(8, 16).toFixed(2)}px`,
+                delay: `${random(0, 10).toFixed(2)}s`,
+                duration: `${random(15, 30).toFixed(2)}s`,
+                swayDuration: `${random(4, 8).toFixed(2)}s`,
+                opacity: `${random(0.4, 0.9).toFixed(2)}`,
+                type: randomChoice(['snowflake', 'star', 'bauble']),
+                color: randomChoice(['text-white', 'text-festive-gold', 'text-festive-red', 'text-festive-silver']),
+            };
+        });
     }, []);
 
-    if (process.env.NODE_ENV !== 'production') {
+    if (isDev) {
         // eslint-disable-next-line no-console
-        console.debug('Snowfall: flakes generated =', flakes.length);
+        console.info('Snowfall: flakes generated =', flakes.length);
     }
 
-    return (
+    const element = (
         <div aria-hidden className="pointer-events-none fixed inset-0 overflow-hidden" style={{ zIndex: 9999 }}>
+            {/* Dev badge */}
+            {isDev && (
+                <div className="pointer-events-none fixed top-3 right-3 z-[10000] rounded px-2 py-1 text-xs bg-black/60 text-white">Snow: ON</div>
+            )}
             <div className="w-full h-full relative">
                 {flakes.map((f, i) => (
                     <div
                         key={i}
-                        className="snowflake absolute"
+                        className={`snowflake absolute ${isDev ? 'snowflake-dev' : ''}`}
                         style={{
-                            top: '-10%',
+                            top: f.debugTop ? f.debugTop : '-10%',
                             left: f.left,
                             width: f.size,
                             height: f.size,
@@ -153,6 +191,13 @@ export const Snowfall: React.FC = () => {
             </div>
         </div>
     );
+
+    // If document is available, render into body via portal to avoid stacking contexts
+    if (typeof document !== 'undefined') {
+        return createPortal(element, document.body);
+    }
+
+    return element;
 };
 
 export default Snowfall;

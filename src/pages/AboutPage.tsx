@@ -56,7 +56,7 @@ const AboutPage: React.FC = () => {
   return (
     <>
       <SEOComponent data={seoData} />
-      
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-medione-green to-medione-blue text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,7 +65,7 @@ const AboutPage: React.FC = () => {
               About M<span className="text-medione-green">ed</span>i<span className="text-medione-blue">o</span>ne Pharmacy
             </h1>
             <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
-              Your trusted healthcare partner in Nanyuki, Kenya, led by licensed pharmacist 
+              Your trusted healthcare partner in Nanyuki, Kenya, led by licensed pharmacist
               Nancy Kanana Kimathi
             </p>
           </div>
@@ -77,11 +77,15 @@ const AboutPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <img
-                src={nancyKimathi.image}
-                alt="Nancy Kanana Kimathi - Principal Medical Consultant"
-                className="w-full rounded-2xl shadow-xl"
-              />
+              <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                <img
+                  src={nancyKimathi.image}
+                  alt="Nancy Kanana Kimathi - Principal Medical Consultant"
+                  className="w-full object-cover image-dim image-dim-strong"
+                />
+                {/* Stronger premium overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40 pointer-events-none" />
+              </div>
             </div>
             <div>
               <Badge variant="outline" className="mb-4">
@@ -200,34 +204,34 @@ const AboutPage: React.FC = () => {
 
             <div className="prose prose-lg mx-auto text-gray-700">
               <p className="text-lg leading-relaxed mb-6">
-                M<span className="text-medione-green">ed</span>i<span className="text-medione-blue">o</span>ne Pharmacy was founded with a simple yet profound mission: to provide 
-                exceptional pharmaceutical care and health services to the people of Nanyuki 
-                and surrounding areas. Located in the heart of Peak Place Mall, we have become 
-                a trusted healthcare destination for families and individuals seeking professional, 
+                M<span className="text-medione-green">ed</span>i<span className="text-medione-blue">o</span>ne Pharmacy was founded with a simple yet profound mission: to provide
+                exceptional pharmaceutical care and health services to the people of Nanyuki
+                and surrounding areas. Located in the heart of Peak Place Mall, we have become
+                a trusted healthcare destination for families and individuals seeking professional,
                 compassionate care.
               </p>
-              
+
               <p className="text-lg leading-relaxed mb-6">
-                Under the leadership of Nancy Kanana Kimathi, a licensed pharmaceutical 
-                technologist with active registration from the Pharmacy and Poisons Board of 
-                Kenya, M<span className="text-medione-green">ed</span>i<span className="text-medione-blue">o</span>ne has established itself as a pillar of health and wellness in 
-                the community. Our approach combines traditional pharmaceutical care with 
-                modern healthcare solutions, ensuring that every patient receives personalized 
+                Under the leadership of Nancy Kanana Kimathi, a licensed pharmaceutical
+                technologist with active registration from the Pharmacy and Poisons Board of
+                Kenya, M<span className="text-medione-green">ed</span>i<span className="text-medione-blue">o</span>ne has established itself as a pillar of health and wellness in
+                the community. Our approach combines traditional pharmaceutical care with
+                modern healthcare solutions, ensuring that every patient receives personalized
                 attention and expert guidance.
               </p>
 
               <p className="text-lg leading-relaxed mb-6">
-                From prescription services and medication consultations to vaccinations and 
-                health screenings, our comprehensive range of services addresses the diverse 
-                healthcare needs of our community. We pride ourselves on our accessibility, 
-                professional excellence, and unwavering commitment to patient safety and 
+                From prescription services and medication consultations to vaccinations and
+                health screenings, our comprehensive range of services addresses the diverse
+                healthcare needs of our community. We pride ourselves on our accessibility,
+                professional excellence, and unwavering commitment to patient safety and
                 well-being.
               </p>
 
               <p className="text-lg leading-relaxed">
-                Today, M<span className="text-medione-green">ed</span>i<span className="text-medione-blue">o</span>ne Pharmacy continues to evolve and grow, always keeping patient 
-                care at the center of everything we do. Whether you're seeking medication 
-                counseling, planning a vaccination, or need expert health advice, our team 
+                Today, M<span className="text-medione-green">ed</span>i<span className="text-medione-blue">o</span>ne Pharmacy continues to evolve and grow, always keeping patient
+                care at the center of everything we do. Whether you're seeking medication
+                counseling, planning a vaccination, or need expert health advice, our team
                 is here to serve you with the highest standards of pharmaceutical care.
               </p>
             </div>
@@ -280,7 +284,7 @@ const AboutPage: React.FC = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Licensed Healthcare Facility</h3>
                 <p className="text-gray-600">
-                  Operates under strict regulatory oversight to ensure the highest standards 
+                  Operates under strict regulatory oversight to ensure the highest standards
                   of pharmaceutical care and patient safety.
                 </p>
               </div>

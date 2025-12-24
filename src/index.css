@@ -108,13 +108,29 @@ img {
 
 /* Christmas festive animations */
 @keyframes twinkle {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.05); }
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
 }
 
 @keyframes glow {
-  0%, 100% { text-shadow: 0 0 5px rgba(212, 175, 55, 0.5); }
-  50% { text-shadow: 0 0 15px rgba(212, 175, 55, 0.8), 0 0 25px rgba(212, 175, 55, 0.6); }
+
+  0%,
+  100% {
+    text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+  }
+
+  50% {
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.8), 0 0 25px rgba(212, 175, 55, 0.6);
+  }
 }
 
 .festive-banner {
@@ -124,4 +140,47 @@ img {
 .festive-emoji {
   animation: twinkle 2s ease-in-out infinite;
   display: inline-block;
+}
+
+/* Festive lights bulbs */
+.festive-lights .bulb {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  opacity: 0.95;
+}
+
+@keyframes twinkle-bulb {
+  0%, 100% { opacity: 0.95; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.88); }
+}
+.animate-twinkle { animation: twinkle-bulb 1.8s ease-in-out infinite; }
+
+/* Dev-only helper style to make flakes easier to inspect during development */
+.snowflake-dev {
+  outline: 1px dashed rgba(255, 255, 0, 0.22);
+  box-shadow: 0 0 0 1px rgba(255, 255, 0, 0.04) inset;
+}
+
+/* Stronger debug visuals for development */
+.snowflake-dev {
+  color: rgba(255, 255, 255, 1) !important;
+  opacity: 1 !important;
+}
+
+.snowflake-dev svg {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
+}
+
+.snowflake-dev path {
+  stroke-width: 2 !important;
+}
+
+/* Dim / premium image treatment */
+.image-dim {
+  filter: brightness(0.68) contrast(0.96) saturate(0.95);
+}
+
+.image-dim-strong {
+  filter: brightness(0.58) contrast(0.94) saturate(0.92);
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Phone, MessageCircle, MapPin, Clock, Mail } from 'lucide-react';
 import { Button } from '../ui/button';
+import FestiveLights from '../ui/FestiveLights';
 
 interface HeaderProps {
   className?: string;
@@ -27,7 +28,8 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
   return (
     <header className={`bg-white shadow-lg sticky top-0 z-50 ${className}`}>
       {/* Festive Banner */}
-      <div className="bg-gradient-to-r from-festive-red via-festive-gold to-festive-green text-white py-1 text-center text-xs font-medium festive-banner">
+      <div className="relative bg-gradient-to-r from-festive-red via-festive-gold to-festive-green text-white py-1 text-center text-xs font-medium festive-banner">
+        <FestiveLights />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <span className="festive-emoji">🎄</span> Merry Christmas & Happy Holidays from{' '}
           <img src="/medione logo.jpg" alt="Medione Pharmacy" className="h-4 inline mx-1 align-text-bottom" />
