@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Phone, 
-  MessageCircle, 
-  MapPin, 
-  Clock, 
-  Star, 
-  Users, 
-  Award, 
+import {
+  Phone,
+  MessageCircle,
+  MapPin,
+  Clock,
+  Star,
+  Users,
+  Award,
   Shield,
   ArrowRight,
   CheckCircle
@@ -44,14 +44,14 @@ const HomePage: React.FC = () => {
   return (
     <>
       <SEOComponent data={seoData} />
-      
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-medione-blue via-blue-700 to-medione-green text-white">
         <div className="absolute inset-0">
           <img
             src="/images/hero-pharmacy.png"
             alt="Medione Pharmacy - Professional Healthcare Services"
-            className="w-full h-full object-cover object-center opacity-20"
+            className="w-full h-full object-cover object-center opacity-30 md:opacity-45 brightness-95 contrast-95"
           />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -138,7 +138,7 @@ const HomePage: React.FC = () => {
               Comprehensive Healthcare Services
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From prescription services to expert consultations, we provide everything you need 
+              From prescription services to expert consultations, we provide everything you need
               for your health and wellness journey.
             </p>
           </div>
@@ -284,7 +284,7 @@ const HomePage: React.FC = () => {
                 Visit Us in Nanyuki
               </h2>
               <p className="text-gray-600 mb-8">
-                Conveniently located at Peak Place Mall, we're easily accessible with 
+                Conveniently located at Peak Place Mall, we're easily accessible with
                 free parking and full accessibility features.
               </p>
               <div className="space-y-6">
