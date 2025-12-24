@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Phone, MessageCircle, MapPin, Clock, Mail } from 'lucide-react';
+import { Phone, MessageCircle, MapPin, Clock, Mail, Home, ShoppingCart, Users, BookOpen } from 'lucide-react';
 import { Button } from '../ui/button';
 import FestiveLights from '../ui/FestiveLights';
 
@@ -95,8 +95,8 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
                 key={item.name}
                 to={item.href}
                 className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${isActive(item.href)
-                    ? 'text-medione-blue bg-blue-50'
-                    : 'text-gray-700 hover:text-medione-blue hover:bg-gray-50'
+                  ? 'text-medione-blue bg-blue-50'
+                  : 'text-gray-700 hover:text-medione-blue hover:bg-gray-50'
                   }`}
               >
                 {item.name}
@@ -127,25 +127,35 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      <div className="md:hidden border-t border-gray-200 bg-white">
-        <nav className="px-4 py-3">
-          <div className="grid grid-cols-2 gap-2">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={`px-4 py-3 text-sm font-medium rounded-lg text-center transition-colors ${isActive(item.href)
-                    ? 'text-white bg-medione-blue'
-                    : 'text-gray-700 bg-gray-50 hover:text-medione-blue hover:bg-blue-50'
-                  }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-        </nav>
-      </div>
+      {/* Mobile Floating Bottom Navigation */}
+      <nav className="md:hidden">
+        <div className="mobile-bottom-nav fixed bottom-4 left-1/2 transform -translate-x-1/2 w-[calc(100%-32px)] max-w-md rounded-full bg-white/95 backdrop-blur-md shadow-xl p-2 flex justify-between items-center z-50">
+          <Link to="/" aria-label="Home" className={`flex-1 text-center py-2 rounded-full ${isActive('/') ? 'text-medione-blue bg-blue-50' : 'text-gray-600 hover:text-medione-blue'}`}>
+            <Home className="mx-auto h-5 w-5" />
+            <div className="text-xs mt-0.5">Home</div>
+          </Link>
+
+          <Link to="/shop" aria-label="Shop" className={`flex-1 text-center py-2 rounded-full ${isActive('/shop') ? 'text-medione-blue bg-blue-50' : 'text-gray-600 hover:text-medione-blue'}`}>
+            <ShoppingCart className="mx-auto h-5 w-5" />
+            <div className="text-xs mt-0.5">Shop</div>
+          </Link>
+
+          <Link to="/consultations" aria-label="Consultations" className={`flex-1 text-center py-2 rounded-full ${isActive('/consultations') ? 'text-medione-blue bg-blue-50' : 'text-gray-600 hover:text-medione-blue'}`}>
+            <Users className="mx-auto h-5 w-5" />
+            <div className="text-xs mt-0.5">Consult</div>
+          </Link>
+
+          <Link to="/blog" aria-label="Blog" className={`flex-1 text-center py-2 rounded-full ${isActive('/blog') ? 'text-medione-blue bg-blue-50' : 'text-gray-600 hover:text-medione-blue'}`}>
+            <BookOpen className="mx-auto h-5 w-5" />
+            <div className="text-xs mt-0.5">Blog</div>
+          </Link>
+
+          <Link to="/contact" aria-label="Contact" className={`flex-1 text-center py-2 rounded-full ${isActive('/contact') ? 'text-medione-blue bg-blue-50' : 'text-gray-600 hover:text-medione-blue'}`}>
+            <MessageCircle className="mx-auto h-5 w-5" />
+            <div className="text-xs mt-0.5">Contact</div>
+          </Link>
+        </div>
+      </nav>
     </header>
   );
 };

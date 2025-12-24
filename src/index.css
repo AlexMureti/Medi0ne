@@ -151,10 +151,22 @@ img {
 }
 
 @keyframes twinkle-bulb {
-  0%, 100% { opacity: 0.95; transform: scale(1); }
-  50% { opacity: 0.45; transform: scale(0.88); }
+
+  0%,
+  100% {
+    opacity: 0.95;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.45;
+    transform: scale(0.88);
+  }
 }
-.animate-twinkle { animation: twinkle-bulb 1.8s ease-in-out infinite; }
+
+.animate-twinkle {
+  animation: twinkle-bulb 1.8s ease-in-out infinite;
+}
 
 /* Dev-only helper style to make flakes easier to inspect during development */
 .snowflake-dev {
@@ -183,4 +195,24 @@ img {
 
 .image-dim-strong {
   filter: brightness(0.58) contrast(0.94) saturate(0.92);
+}
+
+/* Mobile bottom nav safe area + focus/hover interactions */
+.mobile-bottom-nav {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.mobile-bottom-nav a:focus-visible {
+  outline: 2px solid rgba(37, 99, 235, 0.6);
+  outline-offset: 3px;
+  border-radius: 9999px;
+}
+
+.mobile-bottom-nav a>svg {
+  transition: transform .15s ease, color .15s ease;
+}
+
+.mobile-bottom-nav a:hover>svg,
+.mobile-bottom-nav a:focus>svg {
+  transform: translateY(-2px) scale(1.05);
 }

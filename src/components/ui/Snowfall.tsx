@@ -75,7 +75,7 @@ export const Snowfall: React.FC = () => {
                     swayDuration: `${random(2, 4).toFixed(2)}s`,
                     opacity: `1`,
                     type: randomChoice(['snowflake', 'star']),
-                    color: 'text-white',
+                    color: 'rgba(255,255,255,1)',
                     debugTop: '2%'
                 };
             }
@@ -88,7 +88,7 @@ export const Snowfall: React.FC = () => {
                 swayDuration: `${random(4, 8).toFixed(2)}s`,
                 opacity: `${random(0.4, 0.9).toFixed(2)}`,
                 type: randomChoice(['snowflake', 'star', 'bauble']),
-                color: randomChoice(['text-white', 'text-festive-gold', 'text-festive-red', 'text-festive-silver']),
+                color: randomChoice(['rgba(255,255,255,0.9)', 'rgba(212,175,55,0.9)', 'rgba(239,68,68,0.9)', 'rgba(226,232,240,0.9)']),
             };
         });
     }, []);
@@ -100,10 +100,8 @@ export const Snowfall: React.FC = () => {
 
     const element = (
         <div aria-hidden className="pointer-events-none fixed inset-0 overflow-hidden" style={{ zIndex: 9999 }}>
-            {/* Dev badge */}
-            {isDev && (
-                <div className="pointer-events-none fixed top-3 right-3 z-[10000] rounded px-2 py-1 text-xs bg-black/60 text-white">Snow: ON</div>
-            )}
+            {/* Dev badge (hidden on homepage) */}
+            {/* Dev badge removed per request */}
             <div className="w-full h-full relative">
                 {flakes.map((f, i) => (
                     <div
@@ -121,8 +119,8 @@ export const Snowfall: React.FC = () => {
                         }}
                     >
                         <div
-                            className={`snow-sway w-full h-full ${f.color}`}
-                            style={{ animationDelay: f.delay, animationDuration: f.swayDuration }}
+                            className={`snow-sway w-full h-full`}
+                            style={{ animationDelay: f.delay, animationDuration: f.swayDuration, color: f.color }}
                         >
                             {f.type === 'snowflake' && (
                                 <svg
